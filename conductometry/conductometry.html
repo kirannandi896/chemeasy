@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>ChemEasy-Conductometry</title>
+  <meta name="description" content="ChemEasy is a website that helps you learn chemistry">
+  <meta name="keywords" content="Chemistry, ChemEasy, Learn, Chemistry">
+  <meta name="author" content="ChemEasy">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="ChemEasy">
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#000000">
+  <link href="../style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <script src="conductometry.js"></script>
+  <header>
+    <div class="header">
+      <h1>Conductometry</h1>
+    </div>
+  </header>
+  <nav>
+    <div class="topnav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a href="../login.html">Login</a></li>
+      <li><a href="../signup.html">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <main>
+    <div class="row">
+      <div class="column">
+        <h2>Conductometry</h2>
+        <p>Conductometry is the study of the properties of conductors and their interactions with electrical currents. It is a fundamental concept in electrical engineering and is used in a variety of applications, including power distribution, power control, and power systems. Conductometry is a branch of electrical engineering that deals with the study of the properties of conductors and their interactions with electrical currents.</p>
+        <h3>To Calculate Conductometry: </h3>
+        <form>
+          <label for="con1"> Enter the value of concentration of NaOH in Normality: </label>
+          <input type="number" id="con1" name="con1" value="0.5">
+          <br>
+          <label for="con2"> Enter the value of concentration of Acidic Mixture in Normality: </label>
+          <input type="number" id="con2" name="con2" value="0.5">
+          <br>
+          <label for="vol1"> Enter the value of total Volume of NaOH to be added in ml: </label>
+          <input type="number" id="vol1" name="vol1" value="5.0">
+          <br>
+          <label for="vol2"> Enter the value of total Volume of Acidic Mixture to be added in ml: </label>
+          <input type="number" id="vol2" name="vol2" value="10.0">
+          <br><br>
+          <input type="button" value="Calculate" id="submit" onclick="calculateConductometry()">
+        </form>
+
+        <p id="result"></p>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+      </div>
+    </div>
+  </main>
+</body>
+<footer>
+  <div class="footer">
+    <p>Copyright &copy; 2024 chemeasy</p>
+  </div>
+</footer>
+</html>
