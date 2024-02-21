@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -9,17 +10,52 @@
   <meta name="keywords" content="Chemistry, ChemEasy, Learn, Chemistry">
   <meta name="author" content="ChemEasy">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#000000">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="ChemEasy">
-  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
-  <meta name="msapplication-TileColor" content="#000000">
   <link href="../style.css" rel="stylesheet" type="text/css" />
+  <link href="conductometry.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-  <script src="conductometry.js"></script>
+  <script>
+
+    function addRow() {
+      var table = document.getElementById('dataInput');
+      var newRow = table.insertRow(table.rows.length);
+      newRow.innerHTML = '<td><input type="text" class="x-input"></td>' +
+                         '<td><input type="text" class="y-input"></td>';
+    }
+
+    function generateGraph() {
+      var xValues = [];
+      var yValues = [];
+
+      // Loop through table rows and collect input values
+      var tableRows = document.querySelectorAll('#dataInput tr');
+      tableRows.forEach(function(row, index) {
+        if (index !== 0) { // Skip header row
+          var xInput = row.querySelector('.x-input').value;
+          var yInput = row.querySelector('.y-input').value;
+          xValues.push(parseFloat(xInput));
+          yValues.push(parseFloat(yInput));
+        }
+      });
+
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: xValues,
+          datasets: [{
+            label: 'Y Values',
+            data: yValues,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+          }]
+        },
+        options: {}
+      });
+    }
+  </script>
   <header>
     <div class="header">
       <h1>Conductometry</h1>
@@ -45,23 +81,54 @@
         <p>Conductometry is the study of the properties of conductors and their interactions with electrical currents. It is a fundamental concept in electrical engineering and is used in a variety of applications, including power distribution, power control, and power systems. Conductometry is a branch of electrical engineering that deals with the study of the properties of conductors and their interactions with electrical currents.</p>
         <h3>To Calculate Conductometry: </h3>
         <form>
-          <label for="con1"> Enter the value of concentration of NaOH in Normality: </label>
-          <input type="number" id="con1" name="con1" value="0.5">
-          <br>
-          <label for="con2"> Enter the value of concentration of Acidic Mixture in Normality: </label>
-          <input type="number" id="con2" name="con2" value="0.5">
-          <br>
-          <label for="vol1"> Enter the value of total Volume of NaOH to be added in ml: </label>
-          <input type="number" id="vol1" name="vol1" value="5.0">
-          <br>
-          <label for="vol2"> Enter the value of total Volume of Acidic Mixture to be added in ml: </label>
-          <input type="number" id="vol2" name="vol2" value="10.0">
+          <table style="width:50%;text-align:left;" cellpadding="8" cellspacing="7">
+            <tr>
+              <td>Enter the value of concentration of NaOH in Normality:</td>
+              <td><input type="number" id="con1" name="con1" value="0.5"></td>
+            </tr>
+            <tr>
+              <td>
+                Enter the value of concentration of Acidic Mixture in Normality:
+              </td>
+              <td>
+                <input type="number" id="con2" name="con2" value="0.5">
+              </td>
+            </tr>
+            <tr>
+              <td> Enter the value of total Volume of NaOH to be added in ml: </td>
+              <td><input type="number" id="vol1" name="vol1" value="0"  oninput=""></td>
+            </tr>
+            <tr>
+              <td>
+                Enter the value of total Volume of Acidic Mixture to be added in ml:
+              </td>
+              <td>
+                <input type="number" id="vol2" name="vol2" value="10.0">
+              </td>
+            </tr>
+          </table>
+          
+          <br><br><br>
+          <label for="enter"> Enter: </label>
+          <!-- <table cellpadding="5px" cellspacing="10px" id="dataInput">
+          </table> -->
+          <table id="dataInput">
+            <tr>
+              <th>X Values</th>
+              <th>Y Values</th>
+            </tr>
+            <tr>
+              <td><input type="text" class="x-input"></td>
+              <td><input type="text" class="y-input"></td>
+            </tr>
+          </table>
+          <button onclick="addRow()">Add Row</button>
+          <button onclick="generateGraph()">Generate Graph</button>
+          <canvas id="myChart" width="400" height="400"></canvas>
           <br><br>
-          <input type="button" value="Calculate" id="submit" onclick="calculateConductometry()">
         </form>
-
-        <p id="result"></p>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br>
+        
 
       </div>
     </div>
