@@ -17,6 +17,25 @@
 
 <body>
   <script>
+   function calculateConductometry(){
+   var c1 = document.getElementById("con1").value;
+   var c2 = document.getElementById("con2").value;
+   var v1 = document.getElementById("vol1").value;
+   var v2 = document.getElementById("vol2").value;
+   var k1 = 0.0221;
+   var mytable = "<tr><td>Volume</td><td>Conductance</td></tr><tr>";
+
+   for (var i = 0; i <= v1 ; i+=0.2) {
+     mytable += "</tr><tr>";
+     mytable += "<td><input type=\"text\" class = \"x-input\" value=" + i.toFixed(1) + "></td><td><input type=\"text\" class=\"y-input\"></td>";
+   }
+   mytable += "</tr><tr>";
+   mytable += "<td><input type=\"text\" class = \"x-input\" value=" + i.toFixed(1) + "></td><td><input type=\"text\" class=\"y-input\"></td>";
+
+   mytable += "</tr>";
+
+   document.getElementById("dataInput").innerHTML = mytable;
+}
 
     function addRow() {
       var table = document.getElementById('dataInput');
@@ -80,7 +99,7 @@
         <h2>Conductometry</h2>
         <p>Conductometry is the study of the properties of conductors and their interactions with electrical currents. It is a fundamental concept in electrical engineering and is used in a variety of applications, including power distribution, power control, and power systems. Conductometry is a branch of electrical engineering that deals with the study of the properties of conductors and their interactions with electrical currents.</p>
         <h3>To Calculate Conductometry: </h3>
-        <form>
+        
           <table style="width:50%;text-align:left;" cellpadding="8" cellspacing="7">
             <tr>
               <td>Enter the value of concentration of NaOH in Normality:</td>
@@ -96,7 +115,7 @@
             </tr>
             <tr>
               <td> Enter the value of total Volume of NaOH to be added in ml: </td>
-              <td><input type="number" id="vol1" name="vol1" value="0"  oninput=""></td>
+              <td><input type="number" id="vol1" name="vol1" value="0"  oninput="calculateConductometry()"></td>
             </tr>
             <tr>
               <td>
@@ -110,9 +129,9 @@
           
           <br><br><br>
           <label for="enter"> Enter: </label>
-          <!-- <table cellpadding="5px" cellspacing="10px" id="dataInput">
-          </table> -->
-          <table id="dataInput">
+          <table cellpadding="5px" cellspacing="10px" id="dataInput">
+          </table>
+          <!--<table id="dataInput">
             <tr>
               <th>X Values</th>
               <th>Y Values</th>
@@ -121,12 +140,12 @@
               <td><input type="text" class="x-input"></td>
               <td><input type="text" class="y-input"></td>
             </tr>
-          </table>
+          </table>-->
           <button onclick="addRow()">Add Row</button>
           <button onclick="generateGraph()">Generate Graph</button>
           <canvas id="myChart" width="400" height="400"></canvas>
           <br><br>
-        </form>
+        
         <br><br>
         
 
