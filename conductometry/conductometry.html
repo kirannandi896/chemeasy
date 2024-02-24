@@ -5,46 +5,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>ChemEasy-Conductometry</title>
+  <title>ChemEasy</title>
   <meta name="description" content="ChemEasy is a website that helps you learn chemistry">
   <meta name="keywords" content="Chemistry, ChemEasy, Learn, Chemistry">
   <meta name="author" content="ChemEasy">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff6b6b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="ChemEasy">
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#ff6b6b">
   <link href="../style.css" rel="stylesheet" type="text/css" />
   <link href="conductometry.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body onload="call_add_row()">
+
+<!-- ----------------------------------Javscript------------------------------------------------ -->
+
+  
   <script>
-   function calculateConductometry(){
-   var c1 = document.getElementById("con1").value;
-   var c2 = document.getElementById("con2").value;
-   var v1 = document.getElementById("vol1").value;
-   var v2 = document.getElementById("vol2").value;
-   var k1 = 0.0221;
-   var mytable = "<tr><td>Volume</td><td>Conductance</td></tr><tr>";
+    
+    function delete_row(row_id){
+      var table = document.getElementById("dataInput");
+      table.deleteRow(row_id);
+    }
 
-   for (var i = 0; i <= v1 ; i+=0.2) {
-     mytable += "</tr><tr>";
-     mytable += "<td><input type=\"text\" class = \"x-input\" value=" + i.toFixed(1) + "></td><td><input type=\"text\" class=\"y-input\"></td>";
-   }
-   mytable += "</tr><tr>";
-   mytable += "<td><input type=\"text\" class = \"x-input\" value=" + i.toFixed(1) + "></td><td><input type=\"text\" class=\"y-input\"></td>";
-
-   mytable += "</tr>";
-
-   document.getElementById("dataInput").innerHTML = mytable;
-}
-
-    function addRow() {
+    function add_row() {
       var table = document.getElementById('dataInput');
       var newRow = table.insertRow(table.rows.length);
-      newRow.innerHTML = '<td><input type="text" class="x-input"></td>' +
-                         '<td><input type="text" class="y-input"></td>';
+      newRow.innerHTML = '<td><input type="number" class="x-input"></td>' +
+                         '<td><input type="number" class="y-input"></td>' + 
+                         '<td><button onclick="delete_row(this.parentNode.parentNode.rowIndex)">🗑</button></td>';
+    }
+    
+    function call_add_row(){
+      var table = document.getElementById("dataInput");
+      while (table.rows.length > 1) {
+        table.deleteRow(1);
+      }
+
+      var v1 = document.getElementById("vol1").value;
+      var range = parseFloat(v1);
+      for (var i = 0.0; i <= range; i += 0.2) {
+        var row = table.insertRow(table.rows.length);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = "<input type=\"number\" class = \"x-input\" value=" + i.toFixed(1) + ">";
+        cell2.innerHTML = "<input type=\"number\" class=\"y-input\">";
+        cell3.innerHTML = "<button class=\"delete\" onClick=\"delete_row(this.parentNode.parentNode.rowIndex)\">🗑</button>";
+      }
     }
 
     function generateGraph() {
+      var ctx = document.getElementById('myChart').getContext('2d');
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+      var reset = document.getElementById("reset");
+      reset.style.display = "block";
+      
       var xValues = [];
       var yValues = [];
 
@@ -58,14 +80,18 @@
           yValues.push(parseFloat(yInput));
         }
       });
+      
+      var existingChart = Chart.getChart(ctx);
+      if (existingChart) {
+        existingChart.destroy(); // Destroy the existing chart
+      }
 
-      var ctx = document.getElementById('myChart').getContext('2d');
       var chart = new Chart(ctx, {
         type: 'line',
         data: {
           labels: xValues,
           datasets: [{
-            label: 'Y Values',
+            label: 'Volume of NaOH added in ml',
             data: yValues,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
@@ -75,6 +101,11 @@
       });
     }
   </script>
+
+
+<!-- ------------------------------------------HTML------------------------------------------------------- -->
+
+  
   <header>
     <div class="header">
       <h1>Conductometry</h1>
@@ -86,13 +117,13 @@
         <li><a href="../index.html">Home</a></li>
         <li><a href="../about.html">About</a></li>
       <li><a href="../contact.html">Contact</a></li>
-      <li><a href="../login.html">Login</a></li>
-      <li><a href="../signup.html">Sign Up</a></li>
+      <li><a href="../coming_soon.html">Login</a></li>
+      <li><a href="../coming_soon.html">Sign Up</a></li>
       </ul>
     </div>
   </nav>
 
-
+<!-- -------------------------------Main-------------------------------------------------------------- -->
   <main>
     <div class="row">
       <div class="column">
@@ -115,7 +146,7 @@
             </tr>
             <tr>
               <td> Enter the value of total Volume of NaOH to be added in ml: </td>
-              <td><input type="number" id="vol1" name="vol1" value="0"  oninput="calculateConductometry()"></td>
+              <td><input type="number" id="vol1" name="vol1" value="0"  oninput="call_add_row()"></td>
             </tr>
             <tr>
               <td>
@@ -125,29 +156,29 @@
                 <input type="number" id="vol2" name="vol2" value="10.0">
               </td>
             </tr>
+            <tr>
+              <td>
+                Enter rate of NaOH to be added in ml:
+              </td>
+              <td>
+                <input type="number" id="rate" name="rate" value="0.2" disabled>
+              </td>
+            </tr>
           </table>
           
           <br><br><br>
           <label for="enter"> Enter: </label>
           <table cellpadding="5px" cellspacing="10px" id="dataInput">
           </table>
-          <!--<table id="dataInput">
-            <tr>
-              <th>X Values</th>
-              <th>Y Values</th>
-            </tr>
-            <tr>
-              <td><input type="text" class="x-input"></td>
-              <td><input type="text" class="y-input"></td>
-            </tr>
-          </table>-->
-          <button onclick="addRow()">Add Row</button>
+          <br><br>
+          <button onclick="add_row()">Add Row</button>
           <button onclick="generateGraph()">Generate Graph</button>
-          <canvas id="myChart" width="400" height="400"></canvas>
+          <canvas id="myChart"></canvas>
           <br><br>
         
         <br><br>
-        
+
+        <button onclick="location.reload()" id="reset" hidden> Refresh </button>
 
       </div>
     </div>
