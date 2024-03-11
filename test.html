@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>ChemEasy-Conductometry</title>
+  <title>ChemEasy-Test</title>
   <meta name="description" content="ChemEasy is a website that helps you learn chemistry">
   <meta name="keywords" content="Chemistry, ChemEasy, Learn, Chemistry">
   <meta name="author" content="ChemEasy">
@@ -16,19 +16,19 @@
   <meta name="apple-mobile-web-app-title" content="ChemEasy">
   <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
   <meta name="msapplication-TileColor" content="#ff6b6b">
-  <link href="../style.css" rel="stylesheet" type="text/css" />
-  <link href="conductometry.css" rel="stylesheet" type="text/css" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="conductometry/conductometry.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body onload="call_add_row()">
-
+  
 
 <!-- ----------------------------------Javscript------------------------------------------------ -->
 
-
+  
   <script>
-
+    
     function delete_last_row(){
       var table = document.getElementById("dataInput");
       table.deleteRow(table.rows.length - 1);
@@ -45,9 +45,9 @@
       var y_input = newRow.cells[1].getElementsByTagName('input')[0];
       var row_id = table.rows.length - 2;
       x_input.value = parseFloat(row_id*rate_value).toFixed(1);
-
+      
     }
-
+    
     function call_add_row(){
       var table = document.getElementById("dataInput");
       while (table.rows.length > 1) {
@@ -98,7 +98,7 @@
 
       var reset = document.getElementById("reset");
       reset.style.display = "block";
-
+      
       var xValues = [];
       var yValues = [];
 
@@ -111,7 +111,7 @@
           yValues.push(parseFloat(yInput));
         }
       });
-
+      
   xValues.sort(function(a, b) {
     return a - b;
   });
@@ -135,25 +135,25 @@
       });
     }
   </script>
-  <!-- <script src="images/abc.js"></script> -->
+  <script src="images/abc.js"></script>
 
 
 <!-- ------------------------------------------HTML------------------------------------------------------- -->
 
-
+  
   <header>
     <div class="header">
-      <h1>Conductometry</h1>
+      <h1>!!!Testting!!!</h1>
     </div>
   </header>
   <nav>
     <div class="topnav">
       <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../aboutus.html">About</a></li>
-      <li><a href="../contact.html">Contact</a></li>
-      <li><a href="../coming_soon.html">Login</a></li>
-      <li><a href="../coming_soon.html">Sign Up</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="coming_soon.html">Login</a></li>
+      <li><a href="#">Sign Up</a></li>
       </ul>
     </div>
   </nav>
@@ -165,7 +165,7 @@
         <h2>Conductometry</h2>
         <p>Conductometry is the study of the properties of conductors and their interactions with electrical currents. It is a fundamental concept in electrical engineering and is used in a variety of applications, including power distribution, power control, and power systems. Conductometry is a branch of electrical engineering that deals with the study of the properties of conductors and their interactions with electrical currents.</p>
         <h3>To Calculate Conductometry: </h3>
-
+        
           <table style="width:50%;text-align:left;" cellpadding="8" cellspacing="7">
             <tr>
               <td>Enter the value of concentration of NaOH in Normality:</td>
@@ -213,19 +213,19 @@
               </td>
             </tr>
           </table>
-
+          
           <br><br><br>
           <label for="enter"> Enter: </label>
           <table cellpadding="5px" cellspacing="10px" id="dataInput">
             <tr><td>Volume</td><td>Conductance</td></tr>
           </table>
           <br><br>
-          <button onclick="add_row()" title="Add Row"> + </button>
-          <button onclick="delete_last_row()" title="Delete Row"> - </button>
+          <button onclick="add_row()">Add Row</button>
+          <button onclick="delete_last_row()">Delete Row</button>
           <button type="submit" onclick="checkvalues()">Generate Graph</button>
           <canvas id="myChart"></canvas>
           <br><br>
-
+        
         <br><br>
 
         <button onclick="location.reload()" id="reset" hidden> Refresh </button>
