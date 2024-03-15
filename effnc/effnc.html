@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>ChemEasy-Effective Nuclear Charge</title>
+  <meta name="description" content="ChemEasy is a website that helps you learn chemistry">
+  <meta name="keywords" content="Chemistry, ChemEasy, Learn, Chemistry">
+  <meta name="author" content="ChemEasy">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#8871f9">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="ChemEasy">
+  <meta name="msapplication-TileColor" content="#8871f9">
+  <link href="../style.css" rel="stylesheet" type="text/css" />
+  <link href="effnc.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/x-icon" href="../images/icon.jpeg">
+  <script src="../script.js"></script>
+  <script src="effnc.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="header">
+      <h1>Effective Nuclear Charge</h1>
+    </div>
+  </header>
+  <nav>
+    <div class="topnav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../aboutus.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../coming_soon.html">Login</a></li>
+        <li><a href="../coming_soon.html">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <div class="row">
+      <div class="column">
+        <div id="dec">
+          <h2>Effective Nuclear Charge</h2>
+          <p>Effective nuclear charge is a measure of the ability of a nucleus to attract and repel particles. It is a
+            useful tool for understanding the behavior of nuclei and determining the strength of nuclear reactions.</p>
+        </div>
+        <h3>To Calculate Effective Nuclear Charge: </h3>
+        <p>Select the Element: </p>
+        <select id="element" onchange="get_electronic_config()">
+          <option value="1">Hydrogen</option>
+          <option value="2">Helium</option>
+          <option value="3">Lithium</option>
+          <option value="4">Beryllium</option>
+          <option value="5">Boron</option>
+          <option value="6">Carbon</option>
+          <option value="7">Nitrogen</option>
+          <option value="8">Oxygen</option>
+          <option value="9">Fluorine</option>
+          <option value="10">Neon</option>
+          <option value="11">Sodium</option>
+          <option value="12">Magnesium</option>
+          <option value="13">Aluminum</option>
+          <option value="14">Silicon</option>
+          <option value="15">Phosphorus</option>
+          <option value="16">Sulfur</option>
+          <option value="17">Chlorine</option>
+          <option value="18">Argon</option>
+          <option value="19">Potassium</option>
+          <option value="20">Calcium</option>
+          <option value="21">Scandium</option>
+          <option value="22">Titanium</option>
+          <option value="23">Vanadium</option>
+          <option value="24">Chromium</option>
+          <option value="25">Manganese</option>
+          <option value="26">Iron</option>
+          <option value="27">Cobalt</option>
+          <option value="28">Nickel</option>
+          <option value="29">Copper</option>
+          <option value="30">Zinc</option>
+          <option value="31">Gallium</option>
+          <option value="32">Germanium</option>
+          <option value="33">Arsenic</option>
+          <option value="34">Selenium</option>
+          <option value="35">Bromine</option>
+          <option value="36">Krypton</option>
+          <option value="37">Rubidium</option>
+          <option value="38">Strontium</option>
+          <option value="39">Yttrium</option>
+          <option value="40">Zirconium</option>
+          <option value="41">Niobium</option>
+          <option value="42">Molybdenum</option>
+          <option value="43">Technetium</option>
+          <option value="44">Ruthenium</option>
+          <option value="45">Rhodium</option>
+          <option value="46">Palladium</option>
+          <option value="47">Silver</option>
+          <option value="48">Cadmium</option>
+          <option value="49">Indium</option>
+          <option value="50">Tin</option>
+          <option value="51">Antimony</option>
+          <option value="52">Tellurium</option>
+          <option value="53">Iodine</option>
+          <option value="54">Xenon</option>
+          <option value="55">Cesium</option>
+          <option value="56">Barium</option>
+          <option value="57">Lanthanum</option>
+          <option value="58">Cerium</option>
+          <option value="59">Praseodymium</option>
+          <option value="60">Neodymium</option>
+          <option value="61">Promethium</option>
+          <option value="62">Samarium</option>
+          <option value="63">Europium</option>
+          <option value="64">Gadolinium</option>
+          <option value="65">Terbium</option>
+          <option value="66">Dysprosium</option>
+          <option value="67">Holmium</option>
+          <option value="68">Erbium</option>
+          <option value="69">Thulium</option>
+          <option value="70">Ytterbium</option>
+          <option value="71">Lutetium</option>
+          <option value="72">Hafnium</option>
+          <option value="73">Tantalum</option>
+          <option value="74">Tungsten</option>
+          <option value="75">Rhenium</option>
+          <option value="76">Osmium</option>
+          <option value="77">Iridium</option>
+          <option value="78">Platinum</option>
+          <option value="79">Gold</option>
+          <option value="80">Mercury</option>
+          <option value="81">Thallium</option>
+          <option value="82">Lead</option>
+          <option value="83">Bismuth</option>
+          <option value="84">Polonium</option>
+          <option value="85">Astatine</option>
+          <option value="86">Radon</option>
+          <option value="87">Francium</option>
+          <option value="88">Radium</option>
+          <option value="89">Actinium</option>
+          <option value="90">Thorium</option>
+          <option value="91">Protactinium</option>
+          <option value="92">Uranium</option>
+          <option value="93">Neptunium</option>
+          <option value="94">Plutonium</option>
+          <option value="95">Americium</option>
+          <option value="96">Curium</option>
+          <option value="97">Berkelium</option>
+          <option value="98">Californium</json>
+          <option value="99">Einsteinium</option>
+          <option value="100">Fermium</option>
+          <option value="101">Mendelevium</option>
+          <option value="102">Nobelium</option>
+          <option value="103">Lawrencium</option>
+          <option value="104">Rutherfordium</option>
+          <option value="105">Dubnium</option>
+          <option value="106">Seaborgium</option>
+          <option value="107">Bohrium</option>
+          <option value="108">Hassium</option>
+          <option value="109">Meitnerium</option>
+          <option value="110">Darmstadtium</option>
+          <option value="111">Roentgenium</option>
+          <option value="112">Copernicium</option>
+          <option value="113">Nihonium</option>
+          <option value="114">Flerovium</option>
+          <option value="115">Moscovium</json>
+          <option value="116">Livermorium</option>
+          <option value="117">Tennessine</option>
+          <option value="118">Oganesson</option>
+        </select>
+        <h3>Electronic Configuration: </h3>
+        <p id="electronic_config">1s1</p>
+
+        <h3>Electron Selection: </h3>
+        <p>Principal quantum number (n) : </p>
+        <select id="n" onchange="calculate_sheilding()">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        <p>Azimuthal quantum number (l) : </p>
+        <select id="l" onchange="calculate_sheilding()">
+          <option value="2" id="2">s</option>
+          <option value="6" id="6">p</option>
+          <option value="10" id="10">d</option>
+          <option value="14" id="14">f</option>
+        </select>
+
+        <h3>You choose an electron in the orbital <span id="op_orbital">1s</span></h3>
+        <h3>Value of the sheilding: <span id="op_sheilding">0.00</span></h3>
+        <h3>Effective charge: <span id="op_effective_charge">1.00</span></h3>
+        <p>This calculator implements <b>Slater's rules.</b> Other methods may return slightly different results.</p>
+        <!-- <script>
+
+          function electronicConfiguration() {
+            var element = document.getElementById("element").value;
+            var electronic_config = "";
+            if (element == 1) {
+              electronic_config = "1s<sup>1</sup>";
+            }
+            else if (element == 2) {
+              electronic_config = "1s<sup>2</sup>";
+            }
+
+            else if (element == 3) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>1</sup>";
+            }
+            else if (element == 4) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup>";
+            }
+            else if (element == 5) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>1</sup>";
+            }
+
+            else if (element == 6) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>2</sup>";
+            }
+            else if (element == 7) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>3</sup>";
+            }
+            else if (element == 8) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>4</sup>";
+            }
+            else if (element == 9) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>5</sup>";
+            }
+            else if (element == 10) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup>";
+            }
+            else if (element == 11) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup>";
+            }
+            else if (element == 12) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup>";
+            }
+            else if (element == 13) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>1</sup>";
+            }
+            else if (element == 14) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>2</sup>";
+            }
+            else if (element == 15) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>3</sup>";
+            }
+            else if (element == 16) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>4</sup>";
+            }
+            else if (element == 17) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>5</sup>";
+            }
+            else if (element == 18) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup>";
+            }
+
+            else if (element == 19) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>1</sup>";
+            }
+            else if (element == 20) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup>";
+            }
+            else if (element == 21) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>1</sup>";
+            }
+            else if (element == 22) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>2</sup>";
+            }
+            else if (element == 23) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>3</sup>";
+            }
+            else if (element == 24) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>4</sup>";
+            }
+            else if (element == 25) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>5</sup>";
+            }
+            else if (element == 26) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>6</sup>";
+            }
+            else if (element == 27) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>7</sup>";
+            }
+            else if (element == 28) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>8</sup>";
+            }
+            else if (element == 29) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>9</sup>";
+            }
+            else if (element == 30) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup>";
+            }
+              /// donr kfkkfmdlmflmf=------------------------------------------
+
+            else if (element == 31) {
+                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>1</sup>";
+            }
+            else if (element == 32) {
+                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>2</sup>";
+            }
+            else if (element == 33) {
+                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>3</sup>";
+            }
+            else if (element == 34) {
+                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>4</sup>";
+            }
+            else if (element == 35) {
+                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>5</sup>";
+            }
+            else if (element == 36) {
+                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup>";
+            }
+            else if (element == 37) {
+                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>1</sup>";
+            }
+            else if (element == 38) {
+                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup>";
+            }
+            else if (element == 39) {
+                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>1</sup>";
+            }
+            else if (element == 40) {
+                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>2</sup>";
+            }
+
+            else if (element == 41) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>1</sup>";
+            }
+            else if (element == 42) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>2</sup>";
+            }
+            else if (element == 43) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>3</sup>";
+            }
+            else if (element == 44) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>4</sup>";
+            }
+            else if (element == 45) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>5</sup>";
+            }
+            else if (element == 46) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>6</sup>";
+            }
+            else if (element == 47) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>6</sup> 5s<sup>1</sup>";
+            }
+            else if (element == 48) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>6</sup> 5s<sup>2</sup>";
+            }
+            else if (element == 49){
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>6</sup> 5s<sup>2</sup> 4f<sup>12</sup> 6d<sup>1</sup>";
+            }
+
+
+            else if (element == 112) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup>";
+            }
+            else if (element == 113) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 4d<sup>10</sup> 4f<sup>14</sup> 5s<sup>2</sup> 5p<sup>6</sup> 5d<sup>10</sup> 6s</sup> 6p<sup>1</sup>";
+            }
+
+            else if (element == 114) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup>";
+            }
+            else if (element == 115) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup>";
+            }
+            else if (element == 116) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup>";
+            }
+            else if (element == 117) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>3</sup>";
+            }
+            else if (element == 118) {
+              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup>";
+            }
+
+            document.getElementById("electronic_config").innerHTML = electronic_config;
+
+          }
+        </script> -->
+      </div>
+    </div>
+  </main>
+
+</body>
+<footer>
+  <div class="footer">
+    <p>Copyright &copy; 2024 chemeasy</p>
+  </div>
+</footer>
+
+</html>
