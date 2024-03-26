@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -173,7 +173,7 @@
 
         <h3>Electron Selection: </h3>
         <p>Principal quantum number (n) : </p>
-        <select id="n" onchange="calculate_sheilding()">
+        <select id="n" onchange="calculateEffectiveNuclearCharge()">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -183,7 +183,7 @@
           <option value="7">7</option>
         </select>
         <p>Azimuthal quantum number (l) : </p>
-        <select id="l" onchange="calculate_sheilding()">
+        <select id="l" onchange="calculateEffectiveNuclearCharge()">
           <option value="2" id="2">s</option>
           <option value="6" id="6">p</option>
           <option value="10" id="10">d</option>
@@ -191,196 +191,9 @@
         </select>
 
         <h3>You choose an electron in the orbital <span id="op_orbital">1s</span></h3>
-        <h3>Value of the sheilding: <span id="op_sheilding">0.00</span></h3>
+        <h3>Value of the sheilding: <span id="op_shielding">0.00</span></h3>
         <h3>Effective charge: <span id="op_effective_charge">1.00</span></h3>
         <p>This calculator implements <b>Slater's rules.</b> Other methods may return slightly different results.</p>
-        <!-- <script>
-
-          function electronicConfiguration() {
-            var element = document.getElementById("element").value;
-            var electronic_config = "";
-            if (element == 1) {
-              electronic_config = "1s<sup>1</sup>";
-            }
-            else if (element == 2) {
-              electronic_config = "1s<sup>2</sup>";
-            }
-
-            else if (element == 3) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>1</sup>";
-            }
-            else if (element == 4) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup>";
-            }
-            else if (element == 5) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>1</sup>";
-            }
-
-            else if (element == 6) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>2</sup>";
-            }
-            else if (element == 7) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>3</sup>";
-            }
-            else if (element == 8) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>4</sup>";
-            }
-            else if (element == 9) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>5</sup>";
-            }
-            else if (element == 10) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup>";
-            }
-            else if (element == 11) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup>";
-            }
-            else if (element == 12) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup>";
-            }
-            else if (element == 13) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>1</sup>";
-            }
-            else if (element == 14) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>2</sup>";
-            }
-            else if (element == 15) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>3</sup>";
-            }
-            else if (element == 16) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>4</sup>";
-            }
-            else if (element == 17) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>5</sup>";
-            }
-            else if (element == 18) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup>";
-            }
-
-            else if (element == 19) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>1</sup>";
-            }
-            else if (element == 20) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup>";
-            }
-            else if (element == 21) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>1</sup>";
-            }
-            else if (element == 22) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>2</sup>";
-            }
-            else if (element == 23) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>3</sup>";
-            }
-            else if (element == 24) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>4</sup>";
-            }
-            else if (element == 25) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>5</sup>";
-            }
-            else if (element == 26) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>6</sup>";
-            }
-            else if (element == 27) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>7</sup>";
-            }
-            else if (element == 28) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>8</sup>";
-            }
-            else if (element == 29) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>9</sup>";
-            }
-            else if (element == 30) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup>";
-            }
-              /// donr kfkkfmdlmflmf=------------------------------------------
-
-            else if (element == 31) {
-                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>1</sup>";
-            }
-            else if (element == 32) {
-                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>2</sup>";
-            }
-            else if (element == 33) {
-                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>3</sup>";
-            }
-            else if (element == 34) {
-                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>4</sup>";
-            }
-            else if (element == 35) {
-                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>5</sup>";
-            }
-            else if (element == 36) {
-                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup>";
-            }
-            else if (element == 37) {
-                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>1</sup>";
-            }
-            else if (element == 38) {
-                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup>";
-            }
-            else if (element == 39) {
-                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>1</sup>";
-            }
-            else if (element == 40) {
-                electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>2</sup>";
-            }
-
-            else if (element == 41) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>1</sup>";
-            }
-            else if (element == 42) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>2</sup>";
-            }
-            else if (element == 43) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>3</sup>";
-            }
-            else if (element == 44) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>4</sup>";
-            }
-            else if (element == 45) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>5</sup>";
-            }
-            else if (element == 46) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>6</sup>";
-            }
-            else if (element == 47) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>6</sup> 5s<sup>1</sup>";
-            }
-            else if (element == 48) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>6</sup> 5s<sup>2</sup>";
-            }
-            else if (element == 49){
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup> 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>6</sup> 5s<sup>2</sup> 4f<sup>12</sup> 6d<sup>1</sup>";
-            }
-
-
-            else if (element == 112) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup>";
-            }
-            else if (element == 113) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 4d<sup>10</sup> 4f<sup>14</sup> 5s<sup>2</sup> 5p<sup>6</sup> 5d<sup>10</sup> 6s</sup> 6p<sup>1</sup>";
-            }
-
-            else if (element == 114) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup>";
-            }
-            else if (element == 115) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup>";
-            }
-            else if (element == 116) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup>";
-            }
-            else if (element == 117) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>3</sup>";
-            }
-            else if (element == 118) {
-              electronic_config = "1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>6</sup> 5s<sup>2</sup> 4d<sup>10</sup> 5p<sup>6</sup>";
-            }
-
-            document.getElementById("electronic_config").innerHTML = electronic_config;
-
-          }
-        </script> -->
       </div>
     </div>
   </main>

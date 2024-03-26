@@ -6,7 +6,7 @@
 table{
   width: 2vw;
   text-align: center;
-  background: #bbcef7;
+  background: #a6b9c9;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-left: 10px;
@@ -24,8 +24,14 @@ input{
 }
 
 #myChart{
+  display:none;
   width: 10%;
   height: 10%;
+  color: white;
+  background-color: #a6b9c9;
+  padding: 3%;
+  border-radius: 5px;
+  margin-top: 20px;
 }
 
 
