@@ -20,7 +20,7 @@ h3{
 }
 body {
   /* background: linear-gradient(to bottom, #b99dfb, #81b5fd); */
-  background-color:#526d82;
+  background-color:#9EC8B9;
   /* font-family: Arial, sans-serif; */
   font-family: playfair display;
   margin: 0;
@@ -43,20 +43,23 @@ body {
 
 header {
   /* background: linear-gradient(to bottom, #8871f9, #4392f9); */
-  background-color:#27374d;
+  background-color:#092635;
   color: #fff;
   padding: 20px;
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 nav{
   /* background:#4392f9; */
-  background-color: #fefded;
+  color: #fffafa;
+  background-color: #092635;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav .active{
-  /* background-color: #8871f9; */
+  background-color: #FEFAE0;
+  color:#092635;
   border-radius: 5px;
 }
 
@@ -72,18 +75,17 @@ nav ul li{
   margin-right: 10px;
 }
 nav ul li a {
-  color: #fff;
   text-decoration: none;
   padding: 5px;
-  color:black;
-  font-size: 20px;
+  color:white;
+  font-size: 99%;
   font-weight:520;
 }
 nav ul li a:hover{
   /* background-color: #5635f8; */
-  background-color: #8b8b89;
-  color:white;
-  font-size:23px;
+  background-color: #dde6ed;
+  color:#092635;
+  font-size:100%;
   border-radius: 5px;
 }
 
@@ -127,6 +129,14 @@ nav ul li a:hover{
   .sidenav a {font-size: 18px;}
 }
 
+.winback{
+  float:left;
+  border-radius: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 0px;
+}
+
 h1 {
   margin: 0;
 }
@@ -137,7 +147,8 @@ main {
 
 .content{
   /* background-color: #4392f9; */
-  background-color: #9db3bf;
+  background-color: #5C8374;
+  color: white;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -165,19 +176,20 @@ main {
   color: #333;
 }
 .card a{
-  background-color: #a6b9c9;
+  background-color: #5C8374;
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .card a:hover{
-  background-color: #526d82;
+  background-color: #1B4242;
 }
 
 .status{
   float:right;
-  background-color: #f0f4ff;
+  background-color: #ffffff;
   color: #526d82;
   padding: 5px;
   border-radius: 5px;
@@ -191,11 +203,11 @@ main {
   padding: 20px;
 }
 
+
 #dec{
-  display: none;
   color:white;
   z-index: -1;
-  background-image: url(images/back.jpg);
+  background-image: url(images/back.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -221,7 +233,7 @@ label {
 
 input[type="text"],
 input[type="email"],textarea {
-  color: #526d82;
+  color: #092635;
   background-color: #fffafa;
   border: 1px solid #ccc;
   width: 70%;
@@ -239,11 +251,11 @@ input[type="text"]:focus,
 input[type="email"]:focus,textarea:focus{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   outline: none;
-  border: 1.5px solid #526d82;
+  border: 1.5px solid #092635;
 }
 
 input[type="submit"],input[type="button"],button{
-  background-color: #8aafcc;
+  background-color: #1B4242;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -251,7 +263,7 @@ input[type="submit"],input[type="button"],button{
   cursor: pointer;
 }
 input[type="submit"]:hover, input[type="button"]:hover, button:hover {
-  background-color: #afcbb3;
+  background-color: #092635;
 }
 
 select{
@@ -269,7 +281,7 @@ select:hover{
 select:focus{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   outline: none;
-  border: 1.5px solid #526d82;
+  border: 1.5px solid #092635;
 }
 
 
@@ -281,7 +293,7 @@ select:focus{
 .footer{
   font-size: 0.2cm;
   /* background: linear-gradient(to top, #8871f9, #4392f9); */
-  background-color: #27374d;
+  background-color: #092635;
   /* box-shadow: 0 0 40px #4392f9; */
   box-shadow: 0 0 10px #fafafa;
   color: #fff;
@@ -296,6 +308,10 @@ select:focus{
   font-size: 0.3cm;
 }
 
+.footer p:before{
+  content: "© 2024 ChemEasy | All rights reserved.";
+}
+
 @media only screen and (max-width: 800px){
   .content{
     width: auto;
@@ -305,8 +321,8 @@ select:focus{
   }
   #dec{
     padding: 5%;
-    border-left:50px solid transparent;
-    border-right:50px solid transparent;
+    border-left:2vw solid transparent;
+    border-right:2vw solid transparent;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }

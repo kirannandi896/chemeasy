@@ -6,7 +6,7 @@
 table{
   width: 2vw;
   text-align: center;
-  background: #a6b9c9;
+  background:  #dde6ed;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-left: 10px;
@@ -28,7 +28,7 @@ input{
   width: 10%;
   height: 10%;
   color: white;
-  background-color: #a6b9c9;
+  background-color: #dde6ed;
   padding: 3%;
   border-radius: 5px;
   margin-top: 20px;
