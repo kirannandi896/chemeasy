@@ -6,3 +6,4 @@ function checkEmailValidity(email) {
 window.addEventListener("load", () => {
   document.getElementById("dec").style.opacity = 1;
 });
+

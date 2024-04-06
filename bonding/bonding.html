@@ -18,25 +18,27 @@
   <link href="../style.css" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/x-icon" href="../images/chemeasyicon.png">
   <script src="../script.js"></script>
+  <script src="../user/update.js" defer type="module"></script>
 </head>
 
 <body>
   <script src="bonding.js"></script>
   <header>
     <div class="header">
-      <h1>Bonding</h1>
+      <div class="hlogo"><img class="headlogo" src="../images/chemeasyicon.png" style="width:100%; height:100%" alt="chemeasyicon"></div>
+      <img class="headpro" style="display:none" id="userProfilePicture" alt="chemeasyicon">
+      <h1>ChemEasy</h1>
     </div>
   </header>
   <nav>
     <div class="topnav">
-      <button class="winback" onclick="window.history.back()"><img src="../images/winback.png" alt="<- Back" title="Back" height="20px" width="20px"></button>
       <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../aboutus.html">About</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-        <li><a href="../installer.html">Install</a>
-        <!-- <li><a href="../signup.html">Sign Up</a></li> -->
-      </ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../aboutus.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a href="../user/login.html" id="userNameinter">Login</a></li>
+        <a id="userName" style="display:none"></a>
+        <p id="userEmail" style="display:none"></p>
     </div>
   </nav>
   <main>
@@ -45,7 +47,7 @@
         <div id="dec">
           <h2>Bonding</h2>
           <p>In chemistry, bonding is the attraction between atoms. This attraction can be caused by the different behaviors of the atoms' outermost electrons. Chemical bonds hold molecules together and create temporary connections that are essential to life.<br><br>
-            <h4>A “rule of thumb” for determining how a bond will behave in chemical reactions is:</h4><ul><li>If the electronegativity difference between the two bonded atoms is<b> > </b>0.4, the bond will behave as polar.</li>
+            <h4 style="color:white;">A “rule of thumb” for determining how a bond will behave in chemical reactions is:</h4><ul><li>If the electronegativity difference between the two bonded atoms is<b> > </b>0.4, the bond will behave as polar.</li>
             <li>If the electronegativity difference is 0.4 or less, the bond will behave as nonpolar.</li>
             <li>If the electronegativity difference is<b> > </b>2, the bond will behave as ionic.</li></ul></p>
         </div>

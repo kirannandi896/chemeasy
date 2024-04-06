@@ -17,23 +17,26 @@
   <meta name="msapplication-TileColor" content="#092635">
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/x-icon" href="images/chemeasyicon.png">
+  <script src="user/update.js" defer type="module"></script>
 </head>
 
-<body align="center">
+<body>
+  <script src="script.js"></script>
   <header>
     <div class="header">
+      <div class="hlogo"><img class="headlogo" src="images/chemeasyicon.png" style="width:100%; height:100%" alt="chemeasyicon"></div>
+      <img class="headpro" style="display:none" id="userProfilePicture" alt="chemeasyicon">
       <h1>ChemEasy</h1>
     </div>
   </header>
   <nav>
     <div class="topnav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="aboutus.html">About</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutus.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
-        <li><a href="installer.html">Install</a></li>
-      <!-- <li><a href="#">Sign Up</a></li> -->
-      </ul>
+      <li><a href="user/login.html" id="userName">Login</a></li>
+        <p id="userEmail" style="display:none"></p>
     </div>
   </nav>
   <main>
@@ -50,7 +53,7 @@
     </section>
   </main>
 </body>
-<footer style="position: fixed; bottom: 0; width: 100%;">
+<footer style="position: fixed; bottom: 40px; width: 100%;">
   <div class="footer">
     <p></p>
   </div>
