@@ -59,8 +59,8 @@ header h1{
 }
 
 .hlogo{
-  width:5%;
-  height: 5%;
+  width:3%;
+  height: 3%;
 }
 @media only screen and (max-width: 600px){
   .hlogo{
@@ -85,7 +85,7 @@ header h1{
 }
 .header img{
   width:3%;
-  height: 3%;
+  height:3%;
 }
 @media only screen and (max-width: 600px){
   .header img{

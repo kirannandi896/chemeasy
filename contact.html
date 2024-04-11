@@ -18,6 +18,7 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/x-icon" href="images/chemeasyicon.png">
   <script src="user/update.js" defer type="module"></script>
+  <script src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
   <script>
     function auto(){
       const name = document.getElementById("userName").textContent;
@@ -73,13 +74,13 @@
             <input type="text" name="name" id="full-name" placeholder="First and Last" required="" onclick="auto()">
             <br><br>
             <label for="email-address">Email Address</label>
-            <input type="email" name="_replyto" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" id="email-address" placeholder="email@domain.tld" required="" onclick="auto()" readonly>
+            <input type="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" id="email-address" placeholder="email@domain.tld" required onclick="auto()" readonly>
             <br><br>
             <label for="message">Message</label>
             <textarea rows="5" name="message" id="message" placeholder="Message" onclick="auto()" required=""></textarea>
             <br><br>
             <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
-            <input type="submit" value="Send">
+            <input type="button" value="Send" onclick="check()">
           </div>
         </form>
       </div>

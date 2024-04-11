@@ -121,9 +121,6 @@ var elements = [
 
 
 
-const alpha =  {
-  
-}
 
 
 
@@ -138,32 +135,55 @@ function get_electronic_config() {
 }
 
 
-function calculateEffectiveNuclearCharge() {
-  var atomic_no = document.getElementById("element").value;
-  var principal_quantum = document.getElementById("n").value;
-  var azimuthal_quantum = document.getElementById("l").value;
-  var subshell = document.getElementById(azimuthal_quantum).innerHTML;
-  var elec_confg = elements[atomic_no - 1].values.electronic_configuration;
-  var electron_config = elec_confg.replace(/\(|\)/gi, "  ");
-  var electron_config_arr = electron_config.split(" ");
-  var electron_config_arr_length = electron_config_arr.length;
-  //Calculate Sheilding constant:
-  var sheilding_constant = 0;
-  var orbital = principal_quantum + subshell;
-  if (parseInt(orbital[0]) <= parseInt((atomic_no / 13) + 2)){
-    if (orbital == "1s" || orbital == "2s" || orbital == "2p" || orbital == "3s" || orbital == "3p" || orbital == "4s" || orbital == "3d" || orbital == "4p" || orbital == "5s" || orbital == "4d" || orbital == "5p" || orbital == "6s" || orbital == "4f" || orbital == "5d" || orbital == "6p" || orbital == "7s" || orbital == "5f" || orbital == "6d" || orbital == "7p" || orbital == "8s"){
-      document.getElementById("op_orbital").innerHTML = orbital;
-    }
-    else {
-      document.getElementById("op_orbital").innerHTML = " - (Not a valid orbital)";
-    }
+function shielding_constant(elec_config){
+  subshells = elec_config.split(" ");
+  console.log(subshells);
+  let shieldingConstant = 0;
+  for (const subshell of subshells) {
+    const numberOfElectrons = subshell[1];
+    console.log("number of electrons: ", numberOfElectrons);
+    const subshellShieldingConstant = getSubshellShieldingConstant(subshell);
+    console.log("subshell shielding constant: ", subshellShieldingConstant);
+    shieldingConstant += subshellShieldingConstant * numberOfElectrons;
   }
-  else{
-    document.getElementById("op_orbital").innerHTML = " - (Not a valid orbital)";
-    return;
-  }
-
-  
-  
+  return shieldingConstant;
 }
 
+function getSubshellShieldingConstant(subshell) {
+  console.log("Subshell: ",subshell);
+  const principalQuantumNumber = subshell[0];
+  const azimuthalQuantumNumber = subshell[2];
+  const subshellShieldingConstant = principalQuantumNumber - 0.35 * azimuthalQuantumNumber - 0.85;
+  return subshellShieldingConstant;
+}
+
+
+function cal_shielding_constant(econfig, n, l){
+  subshells = econfig.split(" ");
+  let sheilding = 0;
+  const energy = n+l;
+  for (const subshell of subshells){
+    if (parseInt(subshell[0]) <= n){
+      if(n==1 && l==0){
+        sheilding += (parseInt(subshell[2])-1)*0.30;
+      }
+      else if(subshell[1]=='s' || subshell[1]=='p'){
+        if(parseInt(subshell[0])==n){
+          if((subshell[1]=='s' && l==0) || (subshell[1]=='p' && l==1)){
+            sheilding += (parseInt(subshell[2])-1)*0.35;
+          }
+          else{
+            sheilding += parseInt(subshell[2])*0.35;
+          }
+        }
+      }
+    }
+  }
+}
+
+const atomicNumber = 11; // Sodium
+const elec_config = "1s2 2s2 2p6 3s1";
+
+const shieldingConstant = shielding_constant(elec_config);
+
+console.log(shieldingConstant); // 8.8
