@@ -15,12 +15,7 @@ function ctrlKey(e, keyCode) {
 DisableDevtool({
   ondevtoolopen: (type) => {
     if(DisableDevtool.isRunning){console.log("Copyright restrictions are in effect.");
-                                 try {
-                                   window.location.href="../test/init.html";
-                                 }
-                                 catch(err) {
-                                   window.location.href="test/init.html";
-                                 }
+                                 window.location.href="../../chemeasy/test/init.html"
                                 }
   },
 });
