@@ -14,7 +14,7 @@ function ctrlKey(e, keyCode) {
 }
 DisableDevtool({
   ondevtoolopen: (type) => {
-    if(DisableDevtool.isRunning){console.log("Copyright restrictions are in effect."); window.location.href="https://kirannandi896.github.io/chemeasy/test/init.html";}
+    if(DisableDevtool.isRunning){console.log("Copyright restrictions are in effect."); window.location.href="../test/init.html";}
   },
 });
 document.onkeydown = (e) => {
