@@ -14,7 +14,14 @@ function ctrlKey(e, keyCode) {
 }
 DisableDevtool({
   ondevtoolopen: (type) => {
-    if(DisableDevtool.isRunning){console.log("Copyright restrictions are in effect."); window.location.href="../test/init.html";}
+    if(DisableDevtool.isRunning){console.log("Copyright restrictions are in effect.");
+                                 try {
+                                   window.location.href="../test/init.html";
+                                 }
+                                 catch(err) {
+                                   window.location.href="test/init.html";
+                                 }
+                                }
   },
 });
 document.onkeydown = (e) => {
