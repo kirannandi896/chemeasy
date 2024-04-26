@@ -1154,7 +1154,7 @@ function get_electronic_config() {
       ].values.electronic_configuration.replace(/\(|\)/gi, "  ");
       break;
     }
-  }
+  } 
 }
 
 // function shielding_constant(elec_config){
@@ -1256,6 +1256,7 @@ function cal_shielding_constant(econfig, n, l) {
 }
 
 function calculateEffectiveNuclearCharge() {
+  get_electronic_config();
   const elec_config = document.getElementById("electronic_config").textContent;
   const n = document.getElementById("n").value;
   const l = document.getElementById("l").value;
