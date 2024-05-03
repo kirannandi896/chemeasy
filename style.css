@@ -231,6 +231,8 @@ main {
   color: #333;
 }
 .card a{
+  float: left;
+  /* margin-bottom: 30px; */
   background-color: #5C8374;
   color: #fff;
   padding: 10px 20px;
