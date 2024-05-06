@@ -2,9 +2,24 @@ function checkEmailValidity(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
-window.addEventListener("load", () => {
-  document.getElementById("dec").style.opacity = 1;
-});
+document.onreadystatechange = function () {
+  var state = document.readyState
+  if (state == 'interactive') {
+    document.getElementById('loader').style.visibility = 'visible'
+    document.getElementById('body').style.overflow = 'hidden'
+  } else if (state == 'complete') {
+      setTimeout(function(){
+         document.getElementById('interactive');
+         document.getElementById('loader').style.visibility="hidden";
+         document.getElementById('load-holder').style.visibility="hidden";
+         document.getElementById('body').style.overflow = 'auto'
+      },0);
+  }
+}
+// window.addEventListener("load", () => {
+//   document.getElementById("dec").style.zIndex = -1;
+//   document.getElementById("dec").style.opacity = 1;
+// });
 document.addEventListener("contextmenu", (e) => e.preventDefault());
 function ctrlShiftKey(e, keyCode) {
   return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);

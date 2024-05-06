@@ -4,48 +4,65 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>ChemEasy-Phmetry</title>
+  <title>ChemEasy-phmetry</title>
   <meta name="description" content="ChemEasy is a website that allows users to easily access and learn about chemistry. We provide a variety of resources, including videos, articles, and interactive exercises, to help users learn and understand the fundamentals of chemistry. Our goal is to empower users with the knowledge and skills they need to succeed in their chemistry endeavors.">
   <meta name="keywords" content="Chemistry, ChemEasy, Learn, Chemistry">
   <meta name="author" content="ChemEasy">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#092635">
+  <meta name="theme-color" content="#093b45">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#093b45">
   <meta name="apple-mobile-web-app-title" content="ChemEasy">
   <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
-  <meta name="msapplication-TileColor" content="#092635">
+  <meta name="msapplication-TileColor" content="#093b45">
   <link href="../style.css" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/x-icon" href="../images/chemeasyicon.png">
   <script src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
   <script src="../script.js"></script>
-  
+  <script src="../user/update.js" defer type="module"></script>
 </head>
-
-<body>
-  <script src="phmetry.js"></script>
-  <header>
-    <div class="header">
-      <h1>PH Metry</h1>
-    </div>
-  </header>
-  <nav>
-    <div class="topnav">
-      <button class="winback" onclick="window.history.back()"><img src="../images/winback.png" alt="<- Back" title="Back" height="20px" width="20px"></button>
-      <ul>
+  
+  <body id="body">
+    <div class="load-holder" id="load-holder"><div id="loader"></div></div>
+    <script src="bonding.js"></script>
+    <header>
+      <div class="header">
+        <div class="hlogo"><img class="headlogo" src="../images/chemeasyicon.png" style="width:100%; height:100%" alt="chemeasyicon"></div>
+        <img class="headpro" style="display:none" id="userProfilePicture" alt="chemeasyicon">
+        <h1>ChemEasy</h1>
+      </div>
+    </header>
+    <nav>
+      <div class="topnav">
+        <button class="winback" onclick="window.history.back()"><img src="../images/winback.png" alt="<- Back" title="Back" height="20px" width="20px"></button>
+        <ul>
         <li><a href="../index.html">Home</a></li>
-        <li><a href="../about.html">About</a></li>
-      <li><a href="../contact.html">Contact</a></li>
-      <li><a href="../login.html">Login</a></li>
-      <!-- <li><a href="../signup.html">Sign Up</a></li> -->
-      </ul>
-    </div>
-  </nav>
-</body>
-<footer style="position: fixed; bottom: 0; width: 100%;">
-  <div class="footer">
-    <p></p>
-  </div>
-</footer>
+        <li><a href="../aboutus.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../user/login.html" id="userNameinter">Login</a></li>
+          <a id="userName" style="display:none"></a>
+          <p id="userEmail" style="display:none"></p>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div class="row">
+        <div class="column">
+          <div id="dec">
+            <h2>Ph-Metry</h2>
+            <p><blockquote cite="https://en.wikipedia.org/wiki/PH_meter">
+              A pH meter is a scientific instrument that measures the hydrogen-ion activity in water-based solutions, indicating its acidity or alkalinity expressed as pH. The pH meter measures the difference in electrical potential between a pH electrode and a reference electrode, and so the pH meter is sometimes referred to as a "potentiometric pH meter". The difference in electrical potential relates to the acidity or pH of the solution. Testing of pH via pH meters (pH-metry) is used in many applications ranging from laboratory experimentation to quality control.
+            </blockquote></p>
+          </div>
+        </div>
+      </div>
+      <br><br>
+    </main>
+    <footer>
+      <div class="footer">
+        <p></p>
+      </div>
+    </footer>
+  </body>
 </html>
     

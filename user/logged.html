@@ -10,15 +10,15 @@
     <meta name="keywords" content="Chemistry, ChemEasy, Learn, Chemistry" />
     <meta name="author" content="ChemEasy" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#092635" />
+    <meta name="theme-color" content="#093b45" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#093b45" />
     <meta name="apple-mobile-web-app-title" content="ChemEasy" />
     <meta
       name="msapplication-TileImage"
       content="images/icons/icon-144x144.png"
     />
-    <meta name="msapplication-TileColor" content="#092635" />
+    <meta name="msapplication-TileColor" content="#093b45" />
     <link href="../style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/x-icon" href="../images/chemeasyicon.png" />
     <!-- <script src="user.js" defer type="module"></script> -->
@@ -29,8 +29,8 @@
     <script src="../script.js"></script>
     <title>ChemEasy-Profile</title>
   </head>
-
-  <body>
+  <body id="body">
+    <div class="load-holder" id="load-holder"><div id="loader"></div></div>
     <header>
       <div class="header">
         <div class="hlogo">
@@ -72,12 +72,12 @@
             <img class="upropic" id="userProfilePicture2" alt="" /><br><br>
             <h3 id="userName2"></h3>
             <h4 id="userEmail"></h4>
-            <i style="color: black;" class="fas fa-user-circle"></i>
+            <i style="color: black;font-size: 40px;" class="fas fa-user-circle"></i>
             <br /><br />
             <button id="logout">Logout</button><br><br>
           </div>
-          <br /><br /><br />
-          <button class="winback" onclick="window.history.back()">
+          <!-- <br /><br /><br /> -->
+          <!-- <button class="winback" onclick="window.history.back()">
             <img
               src="../images/winback.png"
               alt="<- Back"
@@ -85,7 +85,7 @@
               height="20px"
               width="20px"
             />
-          </button>
+          </button> -->
           <br /><br /><br />
         </div>
         <br /><br /><br />
