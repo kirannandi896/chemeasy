@@ -1145,6 +1145,30 @@ var elements = [
   },
 ];
 
+
+
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------//
+
+
+
+
+// ------------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
 function get_electronic_config() {
   var atomic_no = document.getElementById("element").value;
   for (var i = 0; i < elements.length; i++) {
@@ -1156,103 +1180,142 @@ function get_electronic_config() {
     }
   } 
 }
-
-// function shielding_constant(elec_config){
-//   subshells = elec_config.split(" ");
-//   console.log(subshells);
-//   let shieldingConstant = 0;
-//   for (const subshell of subshells) {
-//     const numberOfElectrons = subshell[1];
-//     console.log("number of electrons: ", numberOfElectrons);
-//     const subshellShieldingConstant = getSubshellShieldingConstant(subshell);
-//     console.log("subshell shielding constant: ", subshellShieldingConstant);
-//     shieldingConstant += subshellShieldingConstant * numberOfElectrons;
-//   }
-//   return shieldingConstant;
-// }
-
-// function getSubshellShieldingConstant(subshell) {
-//   console.log("Subshell: ",subshell);
-//   const principalQuantumNumber = subshell[0];
-//   const azimuthalQuantumNumber = subshell[2];
-//   const subshellShieldingConstant = principalQuantumNumber - 0.35 * azimuthalQuantumNumber - 0.85;
-//   return subshellShieldingConstant;
-// }
-
 function cal_shielding_constant(econfig, n, l) {
-  elc = econfig.trim();
+  var elc = econfig.trim();
   elc.replace("  ", "");
-  subshells = elc.split("    ");
-  lastshell = subshells[subshells.length - 1];
-  orb = 0;
-  if (lastshell[1] == "s") {
-    orb = 0;
-  } else if (lastshell[1] == "p") {
-    orb = 1;
-  } else if (lastshell[1] == "d") {
-    orb = 2;
-  } else if (lastshell[1] == "f") {
-    orb = 3;
+  var subshells = elc.split("    ");
+  // console.log(subshells);
+  var shell = "";
+  if (l == 0){
+    shell = "s";
   }
-  if (n > lastshell[0] || (lastshell[0] >= n && orb < l)) {
-    return "err";
+  else if (l==1){
+    shell = "p";
   }
-  let sheilding = 0;
-  for (const subshell of subshells) {
-    if (parseInt(subshell[0]) <= n) {
+  else if (l==2){
+    shell = "d";
+  }
+  else if (l==3){
+    shell = "f";
+  }
+  var shell_l = n.toString();
+  var subshel = shell_l+shell;
+  console.log(subshel);
+  var newsubshells = subshells.map((str) => str.slice(0, -1));
+  // console.log(newsubshells)
+  for (var q of newsubshells){
+    if (q.length == 3){
+      newsubshells[newsubshells.indexOf(q)] = q.slice(0, -1);
+    }
+  }
+  newsubshells.sort((a, b) => a[0] - b[0]);
+  // console.log(newsubshells)
+  if (newsubshells.includes(subshel)){
+    let sheilding = 0;
+    
+    for (const subshell of subshells.sort((a, b) => a[0] - b[0])) {
       if (n == 1 && l == 0) {
         sheilding += (parseInt(subshell[2]) - 1) * 0.3;
-      } else if (subshell[1] == "s" || subshell[1] == "p") {
-        if (parseInt(subshell[0]) == n) {
-          if (
-            (subshell[1] == "s" && l == 0) ||
-            (subshell[1] == "p" && l == 1)
-          ) {
-            sheilding += (parseInt(subshell[2]) - 1) * 0.35;
-          } else {
-            sheilding += parseInt(subshell[2]) * 0.35;
-          }
-        } else if (parseInt(subshell[0]) == n - 1) {
-          sheilding += parseInt(subshell[2]) * 0.85;
-        } else {
-          sheilding += parseInt(subshell[2]);
-        }
-      } else if (subshell[1] == "d" || subshell[1] == "f") {
-        if (subshell.length == 3) {
-          if (parseInt(subshell[0]) == n) {
-            if (
-              (subshell[1] == "d" && l == 2) ||
-              (subshell[1] == "f" && l == 3)
-            ) {
-              sheilding += (parseInt(subshell[2]) - 1) * 0.35;
+        break;
+      }
+      // if (subshell.slice(0,2) == subshel){
+      //   sheilding += (parseInt(subshell[2]) - 1) * 0.35;
+      //   break;
+      // }
+      else if (parseInt(subshell[0]) <= n) { 
+        if (l==0 || l==1) {
+          if (subshell.length == 3) {
+            if (parseInt(subshell[0]) == n) {
+              if (
+                (subshell[1] == "s" && l == 0) ||
+                (subshell[1] == "p" && l == 1) ||
+                (subshell[1] == "d" && l == 2) ||
+                (subshell[1] == "f" && l == 3)
+              ) {
+                sheilding += (parseInt(subshell[2]) - 1) * 0.35;
+              } 
+              else {
+                sheilding += parseInt(subshell[2]) * 0.35;
+              }
+            } else if (parseInt(subshell[0]) == n - 1) {
+              sheilding += parseInt(subshell[2]) * 0.85;
             } else {
-              sheilding += parseInt(subshell[2]) * 0.35;
+              sheilding += parseInt(subshell[2]);
             }
-          } else if (parseInt(subshell[0]) == n - 1) {
-            sheilding += parseInt(subshell[2]) * 0.85;
-          } else {
-            sheilding += parseInt(subshell[2]);
+          } 
+
+          else if (subshell.length == 4) {
+            if (parseInt(subshell[0]) == n) {
+              if (
+                (subshell[1] == "s" && l == 0) ||
+                (subshell[1] == "p" && l == 1) ||
+                (subshell[1] == "d" && l == 2) ||
+                (subshell[1] == "f" && l == 3)
+              ) {
+                sheilding += (parseInt(subshell.slice(2, 4)) - 1) * 0.35;
+              } else {
+                sheilding += parseInt(subshell.slice(2, 4)) * 0.35;
+              }
+            } 
+
+            else if (parseInt(subshell[0]) == n - 1) {
+              sheilding += parseInt(subshell.slice(2, 4)) * 0.85;
+            } 
+
+            else {
+              sheilding += parseInt(subshell.slice(2, 4));
+            }
           }
-        } else if (subshell.length == 4) {
-          if (parseInt(subshell[0]) == n) {
-            if (
-              (subshell[1] == "d" && l == 2) ||
-              (subshell[1] == "f" && l == 3)
-            ) {
-              sheilding += (parseInt(subshell.slice(2, 4)) - 1) * 0.35;
+        } 
+        
+        else if (l==2 || l==3) {
+          if (subshell.length == 3) {
+            if (parseInt(subshell[0]) == n) {
+              if (
+                (subshell[1] == "s" && l == 0) ||
+                (subshell[1] == "p" && l == 1) ||
+                (subshell[1] == "d" && l == 2) ||
+                (subshell[1] == "f" && l == 3)
+              ) {
+                sheilding += (parseInt(subshell[2]) - 1) * 0.35;
+              } 
+              else {
+                sheilding += parseInt(subshell[2]) * 0.35;
+              }
             } else {
-              sheilding += parseInt(subshell.slice(2, 4)) * 0.35;
+              sheilding += parseInt(subshell[2]);
             }
-          } else if (parseInt(subshell[0]) == n - 1) {
-            sheilding += parseInt(subshell.slice(2, 4)) * 0.85;
-          } else {
-            sheilding += parseInt(subshell.slice(2, 4));
+          } 
+
+          else if (subshell.length == 4) {
+            if (parseInt(subshell[0]) == n) {
+              if (
+                (subshell[1] == "s" && l == 0) ||
+                (subshell[1] == "p" && l == 1) ||
+                (subshell[1] == "d" && l == 2) ||
+                (subshell[1] == "f" && l == 3)
+              ) {
+                sheilding += (parseInt(subshell.slice(2, 4)) - 1) * 0.35;
+              } else {
+                sheilding += parseInt(subshell.slice(2, 4)) * 0.35;
+              }
+            } 
+            else {
+              sheilding += parseInt(subshell.slice(2, 4));
+            }
           }
         }
       }
+
+      // console.log(sheilding)
     }
+    return sheilding.toFixed(2);
   }
-  return sheilding.toFixed(2);
+
+  else{
+    return "err";
+  }
+  
 }
 
 function calculateEffectiveNuclearCharge() {
