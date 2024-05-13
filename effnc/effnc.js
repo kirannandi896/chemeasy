@@ -1218,10 +1218,10 @@ function cal_shielding_constant(econfig, n, l) {
         sheilding += (parseInt(subshell[2]) - 1) * 0.3;
         break;
       }
-      // if (subshell.slice(0,2) == subshel){
-      //   sheilding += (parseInt(subshell[2]) - 1) * 0.35;
-      //   break;
-      // }
+      if (subshell.slice(0,2) == subshel){
+        sheilding += (parseInt(subshell[2]) - 1) * 0.35;
+        break;
+      }
       else if (parseInt(subshell[0]) <= n) { 
         if (l==0 || l==1) {
           if (subshell.length == 3) {
