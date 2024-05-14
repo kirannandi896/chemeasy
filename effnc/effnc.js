@@ -1202,7 +1202,7 @@ function cal_shielding_constant(econfig, n, l) {
   var subshel = shell_l+shell;
   console.log(subshel);
   var newsubshells = subshells.map((str) => str.slice(0, -1));
-  // console.log(newsubshells)
+  console.log(newsubshells)
   for (var q of newsubshells){
     if (q.length == 3){
       newsubshells[newsubshells.indexOf(q)] = q.slice(0, -1);
@@ -1218,10 +1218,10 @@ function cal_shielding_constant(econfig, n, l) {
         sheilding += (parseInt(subshell[2]) - 1) * 0.3;
         break;
       }
-      if (subshell.slice(0,2) == subshel){
-        sheilding += (parseInt(subshell[2]) - 1) * 0.35;
-        break;
-      }
+      // if (subshell.slice(0,2) == subshel){
+      //   sheilding += (parseInt(subshell[2]) - 1) * 0.35;
+      //   break;
+      // }
       else if (parseInt(subshell[0]) <= n) { 
         if (l==0 || l==1) {
           if (subshell.length == 3) {
@@ -1234,7 +1234,7 @@ function cal_shielding_constant(econfig, n, l) {
               ) {
                 sheilding += (parseInt(subshell[2]) - 1) * 0.35;
               } 
-              else {
+              else if(subshell[1]=="s" || subshell[1]=="p") {
                 sheilding += parseInt(subshell[2]) * 0.35;
               }
             } else if (parseInt(subshell[0]) == n - 1) {
@@ -1253,7 +1253,7 @@ function cal_shielding_constant(econfig, n, l) {
                 (subshell[1] == "f" && l == 3)
               ) {
                 sheilding += (parseInt(subshell.slice(2, 4)) - 1) * 0.35;
-              } else {
+              } else if(subshell[1] == "s" || subshell[1]=="p") {
                 sheilding += parseInt(subshell.slice(2, 4)) * 0.35;
               }
             } 
@@ -1307,7 +1307,7 @@ function cal_shielding_constant(econfig, n, l) {
         }
       }
 
-      // console.log(sheilding)
+      console.log(sheilding)
     }
     return sheilding.toFixed(2);
   }
